@@ -8,5 +8,4 @@ See the individual folders for instructions for each:
 
 In Progress:
 
-* MISP
 * GRR
