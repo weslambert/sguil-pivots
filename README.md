@@ -1,1 +1,1 @@
-# securityonion-otx
+# sguil-pivots
