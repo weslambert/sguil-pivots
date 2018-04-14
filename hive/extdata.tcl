@@ -320,6 +320,50 @@ proc GenCaseHive {} {
     }
 }
 
+proc GenEventFIR {} {
+
+    global DEBUG BROWSER_PATH CUR_SEL_PANE ACTIVE_EVENT MULTI_SELECT
+
+    if { $ACTIVE_EVENT && !$MULTI_SELECT} {
+
+        set selectedIndex [$CUR_SEL_PANE(name) curselection]
+        set sensor [$CUR_SEL_PANE(name) getcells $selectedIndex,sensor]
+        set date [$CUR_SEL_PANE(name) getcells $selectedIndex,date]
+        set srcip [$CUR_SEL_PANE(name) getcells $selectedIndex,srcip]
+        set srcport [$CUR_SEL_PANE(name) getcells $selectedIndex,srcport]
+        set dstip [$CUR_SEL_PANE(name) getcells $selectedIndex,dstip]
+        set dstport [$CUR_SEL_PANE(name) getcells $selectedIndex,dstport]
+        set eventMsg [$CUR_SEL_PANE(name) getcells $selectedIndex,event]
+        if { [catch { exec /bin/sh -c "python genEventFIR.py -j '$eventMsg' -d 'Test' -s '2' -c '3' -l '1' -p '8' -t '2' -a '3'" & } msg] } {
+            tk_messageBox -message "Something seems to have gone wrong!" -type ok
+        } else {
+            tk_messageBox -message "An event has been generated!" -type ok
+        }
+    }
+}
+
+proc GenEventMISP {} {
+
+    global DEBUG BROWSER_PATH CUR_SEL_PANE ACTIVE_EVENT MULTI_SELECT
+
+    if { $ACTIVE_EVENT && !$MULTI_SELECT} {
+
+        set selectedIndex [$CUR_SEL_PANE(name) curselection]
+        set sensor [$CUR_SEL_PANE(name) getcells $selectedIndex,sensor]
+        set date [$CUR_SEL_PANE(name) getcells $selectedIndex,date]
+        set srcip [$CUR_SEL_PANE(name) getcells $selectedIndex,srcip]
+        set srcport [$CUR_SEL_PANE(name) getcells $selectedIndex,srcport]
+        set dstip [$CUR_SEL_PANE(name) getcells $selectedIndex,dstip]
+        set dstport [$CUR_SEL_PANE(name) getcells $selectedIndex,dstport]
+        set eventMsg [$CUR_SEL_PANE(name) getcells $selectedIndex,event]
+        if { [catch { exec /bin/sh -c "python /usr/lib/sguil/PyMISP/examples/create_events.py -d '1' -i '$eventMsg' -a '1' -t '1'" & } msg] } {
+            tk_messageBox -message "Something seems to have gone wrong!" -type ok
+        } else {
+            tk_messageBox -message "An event has been generated!" -type ok
+        }
+    }
+}
+
 #
 # DnsButtonActy: Called when the reverse DNS button is released
 #
