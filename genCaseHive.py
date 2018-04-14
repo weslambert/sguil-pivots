@@ -42,35 +42,3 @@ response = requests.post(url + "/api/case",
                           headers=headers, data=json.dumps(data)
 			)
 print response.content
-
-
-
-#import os
-#import sys
-#import argparse
-#sys.stdout = open('/tmp/test.log', 'w')
-
-#parser = argparse.ArgumentParser(description='Post an event to FIR')
-#parser.add_argument('-a','--actor', help='Actor',required=False)
-#parser.add_argument('-c','--category',help='Category', required=False)
-#parser.add_argument('-l','--confidentiality',help='Confidentiality', required=False)
-#parser.add_argument('-d','--description', help='Description',required=True)
-#parser.add_argument('-t','--detection',help='Detection', required=False)
-#parser.add_argument('-p','--plan',help='Plan', required=False)
-#parser.add_argument('-s','--severity',help='Severity', required=False)
-#parser.add_argument('-j','--subject',help='Subject', required=True)
-
-#args = parser.parse_args()
-
-#actor = args.actor
-#category = args.category
-#confidentiality = args.confidentiality
-#description = args.description
-#detection = args.detection
-#plan = args.plan
-#severity = args.severity
-#subject = args.subject
-
-#print actor
-#print subject
-#print description
